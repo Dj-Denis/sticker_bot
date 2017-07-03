@@ -20,7 +20,7 @@ def handle(msg):
 
     if content_type == 'sticker':
         reply = ''
-        sticker = 'stickers/' + msg['sticker']['file_id'] + '.webp'
+        sticker = msg['sticker']['file_id'] + '.webp'
         bot.download_file(msg['sticker']['file_id'], dest=sticker)
         a = Image.open(sticker)
         a.save((sticker[:-4] + '.png'))
