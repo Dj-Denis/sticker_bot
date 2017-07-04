@@ -4,6 +4,7 @@ import telepot
 import telepot.namedtuple
 from telepot.loop import MessageLoop
 import config
+import os
 
 
 def handle(msg):
@@ -25,6 +26,8 @@ def handle(msg):
         a = Image.open(sticker)
         a.save((sticker[:-4] + '.png'))
         bot.sendDocument(chat_id, open((sticker[:-4] + '.png'), 'rb'))
+        os.remove(sticker)
+        os.remove((sticker[:-4] + '.png'))
 
     if content_type == 'text':
         reply = ''
